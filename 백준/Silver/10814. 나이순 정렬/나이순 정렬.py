@@ -1,14 +1,19 @@
 import sys
-input = sys.stdin.readline
 
-N = int(input())
-member = []
+# splitlines()로 빈 줄 자동으로 처리
+input = sys.stdin.read().splitlines()
 
-for _ in range(N):
-    age, name = input().split()
-    member.append([int(age), str(name)])
+n = int(input[0])
+data = []
 
-member.sort(key=lambda x: x[0])
+for i in range(1, n + 1):
+    m = input[i].split()
+    age = int(m[0])
+    name = m[1]
+    data.append([age, name])
 
-for age, name in member:
+data.sort(key=lambda x: x[0])
+
+for age, name in data:
     print(age, name)
+
