@@ -1,4 +1,4 @@
 function solution(myString) {
-    var answer = myString.split('').map(char => char === 'a' || char === 'A' ? 'A' : char.toLowerCase()).join('');
+    var answer = myString.toLowerCase().split('').map(char => char === 'a' ? 'A' : char).join('');
     return answer;
 }
