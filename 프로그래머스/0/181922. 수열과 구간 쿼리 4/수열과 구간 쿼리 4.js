@@ -7,5 +7,5 @@ function solution(arr, queries) {
             }
         }
     }
-    return arr; // 처리된 배열 반환
+    return arr;
 }
