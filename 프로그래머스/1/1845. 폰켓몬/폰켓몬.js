@@ -1,8 +1,22 @@
+//     1. 주어진 nums 배열에서 고유한 폰켓몬 종류 수를 구한다.
+//        - Set을 사용하여 중복된 값을 제거하고, 고유한 폰켓몬 종류만 남긴다. * Set은 중복을 제거하는 데 유용함
+    
+//     2. 우리가 고를 수 있는 폰켓몬의 수 = N/2
+//        - nums 배열의 길이를 2로 나누어 고를 수 있는 최대 수를 구한다.
+    
+//     3. 최대로 고를 수 있는 폰켓몬 종류 수는 고유한 폰켓몬 종류의 수와 N/2 중 작은 값을 선택
+//        - 만약 고유한 종류가 N/2보다 많다면, N/2만큼 고를 수 있음
+//        - 그렇지 않으면, 고유한 폰켓몬 종류 수만큼 고를 수 있음
+    
+//     4. 결과적으로 Math.min()을 사용하여 고를 수 있는 최대로 다양한 종류의 수를 반환
+    
 function solution(nums) {
-    const maxSelectable = nums.length / 2;
-    const uniqueSpecies = new Set(nums).size; // 중복을 제거한 폰켓몬 종류 개수
+    // 1. Set을 사용하여 고유한 폰켓몬 종류를 찾기
+    const set = new Set(nums);
 
-    return Math.min(maxSelectable, uniqueSpecies);
+    // 2. 고를 수 있는 폰켓몬의 수는 N/2
+    const maxTypes = nums.length / 2;
+
+    // 3. 가능한 최대 고를 수 있는 종류는 고유한 종류의 수와 N/2 중 작은 값
+    return Math.min(set.size, maxTypes);
 }
-
-// Set은 중복을 허용하지 않는 컬렉션, 생성자 함수라서 new 붙여야 함
