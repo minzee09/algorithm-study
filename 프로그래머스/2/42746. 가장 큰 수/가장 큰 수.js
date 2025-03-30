@@ -1,12 +1,35 @@
-function solution(numbers) {
-    // 숫자를 문자열로 변환한 뒤, 정렬 기준을 정의
-    numbers.sort((a, b) => {
-        const strA = a.toString();
-        const strB = b.toString();
-        return (strB + strA) - (strA + strB);  // 큰 순서로 정렬
-    });
+/* 
+   [문제 풀이 전 설계도]
+   1. 입력받은 숫자 배열을 문자열 배열로 변환한다.
+      - 이유: 숫자들을 문자열로 변환해야, 이어 붙였을 때의 결과를 비교할 수 있다.
+   
+   2. 문자열 배열을 커스텀 정렬한다.
+      - 두 문자열 a와 b에 대해, a+b와 b+a를 비교한다.
+      - 만약 a+b가 b+a보다 작다면, b가 먼저 오도록 정렬한다.
+      - 이를 통해 이어 붙였을 때 가장 큰 수를 만드는 순서를 결정한다.
+   
+   3. 예외 처리:
+      - 정렬 후 첫 번째 원소가 "0"이면, 모든 숫자가 0인 경우이므로 "0"을 반환한다.
+   
+   4. 정렬된 문자열 배열을 하나의 문자열로 결합하여 반환한다.
+*/
 
-    // 모든 숫자를 이어 붙인 후, 앞이 '0'인 경우 '0'만 반환
-    const result = numbers.join('');
-    return result[0] === '0' ? '0' : result;
+function solution(numbers) {
+    // 1. 숫자 배열을 문자열 배열로 변환
+    const strNumbers = numbers.map(String);
+    
+    // 2. 커스텀 정렬: a와 b를 비교할 때 a+b와 b+a의 값을 비교하여 내림차순 정렬
+    strNumbers.sort((a, b) => {
+        if (a + b < b + a) return 1;  // b가 a보다 앞에 오도록
+        if (a + b > b + a) return -1; // a가 b보다 앞에 오도록
+        return 0;
+    });
+    
+    // 3. 예외 처리: 가장 큰 숫자가 0이면 전체가 0임
+    if (strNumbers[0] === "0") {
+        return "0";
+    }
+    
+    // 4. 정렬된 문자열 배열을 결합하여 반환
+    return strNumbers.join('');
 }
