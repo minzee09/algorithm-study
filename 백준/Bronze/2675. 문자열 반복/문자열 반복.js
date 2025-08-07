@@ -9,4 +9,4 @@ for(let i = 1; i <= input[0]; i++){
     }
     answer += '\n'
 }
-console.log(answer.trim());
+console.log(answer);
