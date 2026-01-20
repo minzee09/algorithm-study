@@ -7,7 +7,7 @@ const rl = readline.createInterface({
 let input = [];
 
 rl.on('line', function (line) {
-    const[a,b] = line.split(' ');
+    const[a,b] = line.split(' ').map(Number);
     
-    console.log(a, "+", b, "=", Number(a) + Number(b));
+    console.log(a, "+", b, "=", a + b);
 });
