@@ -4,18 +4,20 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-let input = [];
+let input = '';
 
 rl.on('line', function (line) {
-    input = [line];
-}).on('close',function(){
-    str = input[0];
-     const swapCase = (str) => {
-        return str
-            .split("")
-            .map(char => char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase()).join("");
-    };
+    input = line;
+}).on('close', function () {
+    let result = '';
 
-    // 변환 결과 출력
-    console.log(swapCase(str));
+    for (let ch of input) {
+        if (ch === ch.toUpperCase()) {
+            result += ch.toLowerCase();
+        } else {
+            result += ch.toUpperCase();
+        }
+    }
+
+    console.log(result);
 });
