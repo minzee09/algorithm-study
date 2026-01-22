@@ -1,4 +1,7 @@
 function solution(my_string, alp) {
-    var answer = my_string.split('').map(char => char === alp ? alp.toUpperCase() : char).join('');
+    let answer = '';
+    for (str of my_string) {
+        answer += (str === alp ? str.toUpperCase() : str);
+    }
     return answer;
 }
