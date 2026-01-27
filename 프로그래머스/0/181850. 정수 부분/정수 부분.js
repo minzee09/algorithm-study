@@ -1,4 +1,4 @@
 function solution(flo) {
-    var answer = parseInt(flo);
-    return answer;
+    var answer = 0;
+    return Math.floor(flo);
 }
