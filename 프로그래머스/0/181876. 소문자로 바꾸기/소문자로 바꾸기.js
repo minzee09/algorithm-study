@@ -1,4 +1,4 @@
 function solution(myString) {
-    var answer = myString.toLowerCase();
-    return answer;
+    var answer = '';
+    return myString.toLowerCase();
 }
