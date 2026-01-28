@@ -1,3 +1,4 @@
 function solution(my_string) {
-    return my_string.split(' ').filter(str => str);;
+    var answer = [];
+    return my_string.split(' ').filter(i => i != '');
 }
