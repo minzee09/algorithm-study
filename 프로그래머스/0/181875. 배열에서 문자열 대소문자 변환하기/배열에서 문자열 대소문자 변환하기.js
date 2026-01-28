@@ -1,7 +1,4 @@
 function solution(strArr) {
     var answer = [];
-    for (let i = 0; i < strArr.length; i++) {
-        answer.push(i % 2 === 0 ? strArr[i].toLowerCase() : strArr[i].toUpperCase());
-    }
-    return answer;
+    return strArr.map((v,i) => i % 2 === 0 ? v.toLowerCase() : v.toUpperCase());
 }
