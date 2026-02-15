@@ -1,3 +1,4 @@
 function solution(myString) {
-    return myString.split('x').sort().filter(item => item !== "");
+    var answer = [];
+    return myString.split("x").sort().filter(v => v);
 }
