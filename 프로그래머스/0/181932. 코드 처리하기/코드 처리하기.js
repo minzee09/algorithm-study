@@ -1,27 +1,16 @@
 function solution(code) {
-    let ret = '';
-    let mode = 0;
-
-    const actions = {
-        0: (idx, char) => {
-            if (idx % 2 === 0 && char !== '1') {
-                ret += char;
-            }
-        },
-        1: (idx, char) => {
-            if (idx % 2 === 1 && char !== '1') {
-                ret += char;
-            }
-        }
-    };
-
-    for (let i = 0; i < code.length; i++) {
-        if (code[i] === '1') {
-            mode = 1 - mode;
-        } else {
-            actions[mode](i, code[i]);
-        }
+    let mode = false;
+    let answer = [];
+    for (let idx = 0; idx < code.length; idx++){
+        if (code[idx] === '1') {
+            mode = !mode;
+            continue;
+        };
+        if (idx % 2 === 0 && !mode) answer.push(code[idx]);
+        else if (idx % 2 !== 0 && mode) answer.push(code[idx]);
+            
     }
 
-    return ret === '' ? 'EMPTY' : ret;
+    const result = answer.join('');
+    return result === '' ? "EMPTY" : result;
 }
