@@ -1,14 +1,10 @@
 function solution(arr) {
-  let length = arr.length;
-  let nextPowerOfTwo = 1;
+  let len = arr.length;
+  let target = 1;
 
-  while (nextPowerOfTwo < length) {
-    nextPowerOfTwo *= 2;
+  while (target < len) {
+    target *= 2;
   }
 
-  while (arr.length < nextPowerOfTwo) {
-    arr.push(0);
-  }
-
-  return arr;
+  return arr.concat(Array(target - len).fill(0));
 }
