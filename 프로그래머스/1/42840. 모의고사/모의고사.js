@@ -1,21 +1,22 @@
 function solution(answers) {
-    const n1 = [1, 2, 3, 4, 5];
-    const n2 = [2, 1, 2, 3, 2, 4, 2, 5];
-    const n3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
+    const p1 = [1, 2, 3, 4, 5];
+    const p2 = [2, 1, 2, 3, 2, 4, 2, 5];
+    const p3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
     
-    let score1 = 0, score2 = 0, score3 = 0;
+    const scores = [0, 0, 0];
     
-    for (let i = 0; i < answers.length; i++) {
-        if (answers[i] === n1[i % n1.length]) score1++;
-        if (answers[i] === n2[i % n2.length]) score2++;
-        if (answers[i] === n3[i % n3.length]) score3++;
-    }
+    answers.forEach((answer, i) => {
+        if (answer === p1[i % p1.length]) scores[0]++;
+        if (answer === p2[i % p2.length]) scores[1]++;
+        if (answer === p3[i % p3.length]) scores[2]++;
+    });
     
-    const maxScore = Math.max(score1, score2, score3);
-    const answer = [];
-    if (score1 === maxScore) answer.push(1);
-    if (score2 === maxScore) answer.push(2);
-    if (score3 === maxScore) answer.push(3);
+    const maxScore = Math.max(...scores);
+    const result = [];
     
-    return answer;
+    scores.forEach((score, i) => {
+        if (score === maxScore) result.push(i + 1);
+    });
+    
+    return result;
 }
