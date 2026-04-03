@@ -1,34 +1,29 @@
 function solution(n, wires) {
     let answer = Infinity;
-
-    function dfs(node, visited, cutIndex) {
+    const visited = Array(n+1).fill(false);
+    
+    function dfs(node, ignore) {
         visited[node] = true;
         let count = 1;
-
-        for (let i = 0; i < wires.length; i++) {
-            if (i === cutIndex) continue;
-
-            const [v1, v2] = wires[i];
-
-            if (v1 === node && !visited[v2]) {
-                count += dfs(v2, visited, cutIndex);
-            } else if (v2 === node && !visited[v1]) {
-                count += dfs(v1, visited, cutIndex);
+        
+        for (let j = 0; j < wires.length; j++){
+            if(j !== ignore) {
+                const [v1,v2] = wires[j]
+                if (node === v1 && !visited[v2]) count += dfs(v2, ignore);
+                if (node === v2 && !visited[v1]) count += dfs(v1, ignore);
             }
         }
-
         return count;
     }
-
-    for (let i = 0; i < wires.length; i++) {
-        const visited = Array(n + 1).fill(false); //visited[0]은 안씀, 노드가 1부터 시작하기 때문에 맞춤
-
-        const [v1, v2] = wires[i];
-        const size = dfs(v1, visited, i);
-        const diff = Math.abs(size - (n - size));
-
+    
+    for (let i = 0; i < wires.length; i++){
+        const [v1, v2] = wires[i]
+        
+        const size = dfs(v1, i);
+        const diff = Math.abs(size - (n-size));
         answer = Math.min(answer, diff);
+        visited.fill(false);
     }
-
+    
     return answer;
 }
