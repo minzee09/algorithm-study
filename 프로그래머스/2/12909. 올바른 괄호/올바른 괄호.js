@@ -1,21 +1,15 @@
-// openBraces => ( 왼쪽 괄호
-// )괄호 마주했을때 openBraces 스택에 ( 존재해야 true, 없으면 false 반환
-// (괄호면 openBraces에 push
-// for루프 뒤에도 openBraces에 값 존재하면 false 반환
-
 function solution(s){
-    var openBraces = []
-    s = s.split('')
+    var answer = true;
+    const stack = [];
     
-    for (let i = 0; i < s.length; i++){
-        if(s[i] === '('){
-            openBraces.push(s[i])
-        } else if(openBraces.length === 0){
-            return false
+    for(let i = 0; i < s.length; i++){
+        if(s[i] === "("){
+            stack.push(s[i]);
         } else {
-            openBraces.pop();
+            if (stack.length === 0) return false; // pop은 비어있을때도 실행되기 때문
+            stack.pop();
         }
     }
 
-    return openBraces.length !== 0 ? false : true;
+    return stack.length === 0;
 }
