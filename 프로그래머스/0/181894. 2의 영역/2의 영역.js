@@ -1,10 +1,10 @@
 function solution(arr) {
-    const firstIndex = arr.indexOf(2);
-    const lastIndex = arr.lastIndexOf(2);
-
-    if (firstIndex === -1) {
-        return [-1];
-    }
-
-    return arr.slice(firstIndex, lastIndex + 1);
+    const result = [];
+    arr.forEach((s, i) => {
+      if (s === 2) result.push(i);
+    });
+    
+    const lastIdx = result.length-1;
+    
+    return result.length ? arr.slice(result[0], result[lastIdx]+1) : [-1];
 }
