@@ -6,11 +6,10 @@ let arr = input[1].split(" ").map(Number);
 
 // Please Write your code here.
 function solution(arr){
-    let answer = '';
     for(let i = 0; i < n; i++){
-        answer += Math.abs(arr[i]) + ' ';
+        arr[i]= Math.abs(arr[i]);
     }
-    console.log(answer)
 }
 
 solution(arr);
+console.log(arr.join(' '));
